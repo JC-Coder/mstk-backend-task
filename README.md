@@ -54,7 +54,7 @@ To use the API, you will need to send a valid token in the `Authorization` heade
 
 **Postman Documentation**
 
-The API is fully documented on Postman: [link to Postman documentation]
+The API is fully documented on Postman: https://documenter.getpostman.com/view/24185831/2s9YXh4hK5
 
 **Deployment**
 
@@ -73,10 +73,6 @@ The API implements the following security measures:
 - Token-based authentication
 - Input validation
 - Output sanitization
-
-**Conclusion**
-
-This project is a good example of a simple RESTful API built with NodeJS, Typescript, MongoDB, and Docker. It implements token-based authentication and allows users to create and manage products in a store.
 
 ### Additional Documentation
 
@@ -100,6 +96,3 @@ The API implements a number of security measures to protect against common attac
 
 The API is well-tested. All endpoints are covered by unit tests.
 
-**Deployment**
-
-The API can be easily deployed to production using Docker Compose.
