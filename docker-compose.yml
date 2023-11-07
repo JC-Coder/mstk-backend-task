@@ -7,8 +7,12 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    # environment:
-    #   - PORT=3000
+    environment:
+      - APP_NAME=mainstack-backend-interview-app
+      - APP_PORT=3010
+      - APP_ENV=development
+      - DATABASE_URL=mongodb://test:user@mongo-db:27017/mainstack-app?authSource=admin
+      - JWT_SECRET=secret
     env_file:
       - .env
     depends_on:
