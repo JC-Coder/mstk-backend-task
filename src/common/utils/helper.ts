@@ -1,20 +1,20 @@
 import { randomBytes } from 'crypto';
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
 
 export function generateRandomString(length: number): string {
   return randomBytes(length).toString('hex');
 }
 
-export function hashPassword(password: string): Promise<string> {
-  return bcrypt.hash(password, 10);
+export async function hashPassword(password: string): Promise<string> {
+  return await bcrypt.hash(password, 10);
 }
 
-export function comparePassword(
+export async function comparePassword(
   password: string,
   hash: string,
 ): Promise<boolean> {
-  return bcrypt.compare(password, hash);
+  return await bcrypt.compare(password, hash);
 }
 
 export function sendAppResponse(

@@ -1,14 +1,21 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Res, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
-import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from '../auth/guard/jwt.guard';
+import { LoggedInUserDecorator } from '../../../common/decorators/logged-in-user.decorator';
+import { ILoggedInUser } from '../../../common/interfaces/user.interface';
+import { sendAppResponse } from '../../../common/utils/helper';
+import { Response } from 'express';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(AuthGuard)
-  @Get()
-  async getUserProfile() {
-    return await this.userService.getUserById('1');
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getUserProfile(
+    @LoggedInUserDecorator() user: ILoggedInUser,
+    @Res() res: Response,
+  ) {
+    return sendAppResponse(res, 200, user, 'User profile fetched successfully');
   }
 }
